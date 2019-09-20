@@ -1,0 +1,104 @@
+body{
+	margin:0px 0px;
+	padding:0px 0px;
+}
+
+
+/***** single color  paddings this variables we can use any where****/
+
+$myred:red; 
+$myblak:#000; 
+$mywhit:#fff; 
+
+$padding:15px;
+$boder:15px;
+
+
+
+/***** multiple colors  multiple colors time map-get we have to use****/
+
+$colors : (
+myyas:#f2f2f2,
+myblak:#000,
+primary-light: lighten(#555, 40%) 
+
+);
+
+
+/***** we can use function sass here we created color function then we can use that function name color any where with color****/
+
+/****exple color(myyas) ****/
+
+@function color($color-name) {
+	@return map-get($colors, $color-name)
+}
+
+
+/****** in mobile version we can write below code frist we decle variable
+ desktop and which css need to conver mobile version we can inclide in
+  that class like belo one exmple is here allsame like that only***/
+
+$desktop : 840px;
+
+@mixin desktop {
+@media (min-width: #{$desktop}) {
+	@content;
+}
+}
+
+
+
+
+
+
+
+.wrp{
+	background-color:color(myyas);
+	width:100%;
+	height:100vh;
+
+	@include desktop {
+	height:500px;
+	}
+}
+
+
+
+	.contianer {
+	margin:0px auto;
+	width:1170px;
+
+	.header{
+	width:100%;
+	float:left;
+	background:#000;
+
+	ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+
+	li{
+	margin:0px;
+	padding:$padding;
+	float:left;
+	a{
+	margin:0px;
+	padding:0px 0px 0px 0px;
+	color:$mywhit;
+
+	}
+
+	}
+	}
+	}
+
+	.box {
+	background-color:color(primary-light);
+	width:30%;
+	height:300px;
+	margin:15px 30px 0px 0px;
+	float:left;
+}
+
+	}
